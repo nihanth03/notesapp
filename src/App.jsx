@@ -1,28 +1,9 @@
 import { useState } from 'react'
-import { Amplify } from 'aws-amplify';
-import { withAuthenticator } from '@aws-amplify/ui-react';
-import '@aws-amplify/ui-react/styles.css';
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
-// Initialize Amplify
-Amplify.configure({
-  Auth: {
-    region: 'ap-south-1', // e.g., 'us-east-1'
-    userPoolId: 'ap-south-1_dZWoKMzXu',
-    userPoolWebClientId: '4b5u7ulkblckblnc4u4bj2dicl',
-    oauth: {
-      domain: 'notesapp-auth.auth.ap-south-1.amazoncognito.com',  // Your Cognito domain
-      scope: ['email', 'openid', 'profile'],
-      redirectSignIn: 'https://main.dztext8cxpd8m.amplifyapp.com/',
-      redirectSignOut: 'https://main.dztext8cxpd8m.amplifyapp.com/',
-      responseType: 'code'
-    }
-  }
-});
-
-function App({ signOut, user }) {
+function App() {
   const [count, setCount] = useState(0)
 
   return (
@@ -35,7 +16,7 @@ function App({ signOut, user }) {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1>Welcome, {user.username}!</h1>
+      <h1>Vite + React</h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
@@ -43,7 +24,6 @@ function App({ signOut, user }) {
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>
-        <button onClick={signOut}>Sign Out</button>
       </div>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
@@ -52,4 +32,4 @@ function App({ signOut, user }) {
   )
 }
 
-export default withAuthenticator(App);
+export default App
