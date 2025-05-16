@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import './index.css'
 import App from './App.jsx'
-import S3Manager from './s3manager'
+import S3Manager from './s3manager.tsx'
 import { AuthProvider, useAuth } from "react-oidc-context";
 
 const cognitoAuthConfig = {

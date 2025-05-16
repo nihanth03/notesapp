@@ -1,7 +1,7 @@
 // App.js
 
 import { useAuth } from "react-oidc-context";
-import S3Manager from "./s3manager";
+import S3Manager from "./s3manager.tsx";
 
 function App() {
   const auth = useAuth();
