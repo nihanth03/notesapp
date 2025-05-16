@@ -1,7 +1,7 @@
 // App.js
 
 import { useAuth } from "react-oidc-context";
-import S3Manager from "./s3manager.tsx";
+import S3 from "./component/s3.jsx";
 
 function App() {
   const auth = useAuth();
@@ -25,8 +25,13 @@ function App() {
     return (
       <div>
         <h1>Welcome {auth.user?.profile.email}</h1>
-        <S3Manager idToken={auth.user?.id_token} />
-        <button onClick={() => auth.removeUser()}>Sign out</button>
+        <S3 idToken={auth.user?.id_token} />
+        <button 
+          onClick={() => auth.removeUser()} 
+          style={{ marginTop: '20px' }}
+        >
+          Sign out
+        </button>
       </div>
     );
   }

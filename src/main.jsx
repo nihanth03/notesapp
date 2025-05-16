@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import './index.css'
 import App from './App.jsx'
-import S3Manager from './s3manager.tsx'
+import S3 from './component/s3.jsx'
 import { AuthProvider, useAuth } from "react-oidc-context";
 
 const cognitoAuthConfig = {
@@ -28,7 +28,7 @@ function TestS3Manager() {
   return (
     <div>
       <h1>S3 Manager Test Page</h1>
-      <S3Manager idToken={auth.user?.id_token} />
+      <S3 idToken={auth.user?.id_token} />
       <div style={{ marginTop: '20px' }}>
         <button onClick={handleLogout} style={{ marginRight: '10px' }}>Logout</button>
         <Link to="/">Back to Main App</Link>

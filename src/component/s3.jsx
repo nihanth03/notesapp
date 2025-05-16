@@ -1,10 +1,9 @@
-// S3Manager.tsx
+// s3.jsx
 import React, { useEffect, useState } from "react";
 import {
   S3Client,
   ListObjectsV2Command,
   PutObjectCommand,
-  _Object
 } from "@aws-sdk/client-s3";
 import { fromCognitoIdentityPool } from "@aws-sdk/credential-provider-cognito-identity";
 
@@ -13,9 +12,9 @@ const IDENTITY_POOL_ID = "ap-south-1:8c628519-6098-49c3-a41c-5a4ffd9fe0be";
 const USER_POOL_ID = "ap-south-1_dZWoKMzXu";
 const BUCKET_NAME = "file-upload-practice-test";
 
-export default function S3Manager({ idToken }: { idToken: string }) {
-  const [files, setFiles] = useState<_Object[]>([]);
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+export default function S3({ idToken }) {
+  const [files, setFiles] = useState([]);
+  const [selectedFile, setSelectedFile] = useState(null);
 
   useEffect(() => {
     if (!idToken) return;
@@ -106,4 +105,4 @@ export default function S3Manager({ idToken }: { idToken: string }) {
       <button onClick={handleUpload}>Upload to S3</button>
     </div>
   );
-}
+} 
