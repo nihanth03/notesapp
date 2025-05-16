@@ -13,28 +13,28 @@ function App() {
     window.location.href = `${cognitoDomain}/logout?client_id=${clientId}&logout_uri=${encodeURIComponent(logoutUri)}`;
   };
 
-  if (auth.isLoading) {
-    return <div>Loading...</div>;
-  }
+  // if (auth.isLoading) {
+  //   return <div>Loading...</div>;
+  // }
 
-  if (auth.error) {
-    return <div>Encountering error... {auth.error.message}</div>;
-  }
+  // if (auth.error) {
+  //   return <div>Encountering error... {auth.error.message}</div>;
+  // }
 
-  if (auth.isAuthenticated) {
-    return (
-      <div>
-        <h1>Welcome {auth.user?.profile.email}</h1>
-        <S3 idToken={auth.user?.id_token} />
-        <button 
-          onClick={() => auth.removeUser()} 
-          style={{ marginTop: '20px' }}
-        >
-          Sign out
-        </button>
-      </div>
-    );
-  }
+  // if (auth.isAuthenticated) {
+  //   return (
+  //     <div>
+  //       <h1>Welcome {auth.user?.profile.email}</h1>
+  //       <S3 idToken={auth.user?.id_token} />
+  //       <button 
+  //         onClick={() => auth.removeUser()} 
+  //         style={{ marginTop: '20px' }}
+  //       >
+  //         Sign out
+  //       </button>
+  //     </div>
+  //   );
+  // }
 
   return <button onClick={() => auth.signinRedirect()}>Log in</button>;
 }
