@@ -6,6 +6,7 @@ import {
   PutObjectCommand,
 } from "@aws-sdk/client-s3";
 import { fromCognitoIdentityPool } from "@aws-sdk/credential-provider-cognito-identity";
+import { Buffer } from 'buffer';
 
 const REGION = "ap-south-1";
 const IDENTITY_POOL_ID = "ap-south-1:8c628519-6098-49c3-a41c-5a4ffd9fe0be";
@@ -110,10 +111,14 @@ export default function S3({ idToken }) {
       const identityId = (await credentials()).identityId;
       const key = `${identityId}/videos/${selectedFile.name}`;
 
+      // Convert file to buffer
+      const arrayBuffer = await selectedFile.arrayBuffer();
+      const buffer = Buffer.from(arrayBuffer);
+
       const uploadCommand = new PutObjectCommand({
         Bucket: BUCKET_NAME,
         Key: key,
-        Body: selectedFile,
+        Body: buffer,
         ContentType: selectedFile.type
       });
 
